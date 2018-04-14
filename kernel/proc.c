@@ -67,7 +67,7 @@ found:
   p->context = (struct context*)sp;
   memset(p->context, 0, sizeof *p->context);
   p->context->eip = (uint)forkret;
-
+  p->thread_count = 0;
   return p;
 }
 
@@ -215,10 +215,10 @@ wait(void)
     // Scan through table looking for zombie children.
     havekids = 0;
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-      if(p->parent != proc)
+      if(p->parent != proc || proc->pgdir == p->pgdir)
         continue;
       havekids = 1;
-      if(p->state == ZOMBIE){
+      if(p->state == ZOMBIE && p->thread_count == 0){
         // Found one.
         pid = p->pid;
         kfree(p->kstack);
@@ -446,7 +446,6 @@ procdump(void)
 int
 clone(void(*fcn)(void *, void *), void *arg1, void *arg2, void *stack)
 {
-  //int x
   int i, pid;
   struct proc *np;
 
@@ -462,7 +461,7 @@ clone(void(*fcn)(void *, void *), void *arg1, void *arg2, void *stack)
     return -1;
 
   np->stack = stack;
-  np->pgdir = pgdir;
+  np->pgdir = proc->pgdir;
 
   np->sz = proc->sz;
   np->parent = proc;
@@ -491,6 +490,8 @@ clone(void(*fcn)(void *, void *), void *arg1, void *arg2, void *stack)
   pid = np->pid;
   np->state = RUNNABLE;
   safestrcpy(np->name, proc->name, sizeof(proc->name));
+  proc->thread_count++;
+  np->thread_count = proc->thread_count;
   return pid;
 }
 
@@ -507,12 +508,17 @@ int join(void **stack)
       if(p->parent != proc)
         continue;
       havekids = 1;
+      if(p->state != ZOMBIE || p->pgdir != proc->pgdir)
+        continue;
       if(p->state == ZOMBIE){
         // Found one.
+	p->thread_count--;
+	proc->thread_count--;
+        *stack = p->stack;
         pid = p->pid;
         kfree(p->kstack);
         p->kstack = 0;
-        freevm(p->pgdir);
+        //freevm(p->pgdir);
         p->state = UNUSED;
         p->pid = 0;
         p->parent = 0;
