@@ -5,6 +5,8 @@
 #include "x86.h"
 
 #define MAX_PROC 64
+#define PGSIZE 4096
+
 struct ptr_struct {
   int busy; //whether in use or not
   void *ptr;
@@ -43,7 +45,24 @@ void lock_release(lock_t *lock)
 
 int thread_create(void (*start_routine)(void*, void*), void* arg1, void* arg2)
 {
-  return 0;
+  void* freeptr = malloc(PGSIZE*2);
+  void* stack;
+  if(freeptr == 0)
+    return -1;
+  if((uint)freeptr % PGSIZE == 0)
+    stack = freeptr;
+  else
+    stack = freeptr + (PGSIZE - ((uint)freeptr % PGSIZE));
+  for(int i = 0; i < MAX_PROC; i++){
+    if(ptrs[i].busy == 0){
+      ptrs[i].ptr = freeptr;
+      ptrs[i].stack = stack;
+      ptrs[i].busy = 1;
+      break;
+    }
+  }
+  int ret = clone(start_routine, arg1, arg2, stack);
+  return ret;
 }
 
 int thread_join()
