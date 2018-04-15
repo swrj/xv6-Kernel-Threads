@@ -11,6 +11,8 @@ struct {
   struct proc proc[NPROC];
 } ptable;
 
+struct spinlock memlock;
+
 static struct proc *initproc;
 
 int nextpid = 1;
@@ -23,6 +25,7 @@ void
 pinit(void)
 {
   initlock(&ptable.lock, "ptable");
+  initlock(&memlock, "memlock");
 }
 
 // Look in the process table for an UNUSED proc.
@@ -117,6 +120,13 @@ growproc(int n)
       return -1;
   }
   proc->sz = sz;
+
+  struct proc *process;
+  for(process = ptable.proc; process < &ptable.proc[NPROC]; process++) {
+    if (proc != process && process->pgdir == proc->pgdir)
+      process->sz = sz;
+  }
+
   switchuvm(proc);
   return 0;
 }
@@ -512,7 +522,6 @@ int join(void **stack)
         continue;
       if(p->state == ZOMBIE){
         // Found one.
-	p->thread_count--;
 	proc->thread_count--;
         *stack = p->stack;
         pid = p->pid;

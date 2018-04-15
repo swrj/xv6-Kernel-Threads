@@ -4,6 +4,31 @@
 #include "user.h"
 #include "x86.h"
 
+void lock_init(lock_t *lock)
+{
+
+}
+
+void lock_acquire(lock_t *lock)
+{
+
+}
+
+void lock_release(lock_t *lock)
+{
+
+}
+
+int thread_create(void (*start_routine)(void*, void*), void* arg1, void* arg2)
+{
+
+}
+
+int thread_join()
+{
+
+}
+
 char*
 strcpy(char *s, char *t)
 {
