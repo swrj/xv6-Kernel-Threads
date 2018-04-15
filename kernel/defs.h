@@ -10,6 +10,8 @@ struct proc;
 struct spinlock;
 struct stat;
 
+extern struct spinlock memlock;
+
 // bio.c
 void            binit(void);
 struct buf*     bread(uint, uint);

@@ -5,6 +5,7 @@
 #include "mmu.h"
 #include "proc.h"
 #include "sysfunc.h"
+#include "spinlock.h"
 
 int sys_clone(void)
 {
@@ -74,9 +75,14 @@ sys_sbrk(void)
 
   if(argint(0, &n) < 0)
     return -1;
+
+  acquire(&memlock);
   addr = proc->sz;
-  if(growproc(n) < 0)
+  if(growproc(n) < 0){
+    release(&memlock);
     return -1;
+  }
+  release(&memlock);
   return addr;
 }
 

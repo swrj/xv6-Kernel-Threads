@@ -21,12 +21,12 @@ void lock_release(lock_t *lock)
 
 int thread_create(void (*start_routine)(void*, void*), void* arg1, void* arg2)
 {
-
+  return 0;
 }
 
 int thread_join()
 {
-
+  return 0;
 }
 
 char*
