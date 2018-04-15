@@ -470,8 +470,16 @@ clone(void(*fcn)(void *, void *), void *arg1, void *arg2, void *stack)
   if((np = allocproc()) == 0)
     return -1;
 
-  np->stack = stack;
   np->pgdir = proc->pgdir;
+
+  int user_stack[3];
+  uint stack_pointer = (uint)stack + PGSIZE;
+  user_stack[0] = 0xffffffff;
+  user_stack[1] = (uint)arg1;
+  user_stack[2] = (uint)arg2;
+  stack_pointer -= 12;
+  if (copyout(np->pgdir, stack_pointer, user_stack, 12) < 0)
+    return -1;
 
   np->sz = proc->sz;
   np->parent = proc;
@@ -480,17 +488,9 @@ clone(void(*fcn)(void *, void *), void *arg1, void *arg2, void *stack)
   // Clear %eax so that fork returns 0 in the child.
   np->tf->eax = 0;
 
-  void *newstack = stack + PGSIZE - 4;
-  uint arg_1 = (uint)arg1;
-  uint arg_2 = (uint)arg2;
-  copyout(proc->pgdir, (uint)newstack, &arg_1, sizeof(arg_1));
-  newstack = stack + PGSIZE - 8;
-  copyout(proc->pgdir, (uint)newstack, &arg_2, sizeof(arg_2));
-  newstack = stack + PGSIZE - 12;
-  copyout(proc->pgdir, (uint)newstack, (void*)0xffffffff, sizeof(int));
-
-  np->tf->esp = (uint)newstack;
+  np->tf->esp = (uint)stack_pointer;
   np->tf->eip = (uint)fcn;
+  np->stack = stack;
 
   for(i = 0; i < NOFILE; i++)
     if(proc->ofile[i])
@@ -515,10 +515,10 @@ int join(void **stack)
     // Scan through table looking for zombie children.
     havekids = 0;
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-      if(p->parent != proc)
+      if(p->parent != proc || p->pgdir != proc->pgdir)
         continue;
       havekids = 1;
-      if(p->state != ZOMBIE || p->pgdir != proc->pgdir)
+      if(p->state != ZOMBIE)
         continue;
       if(p->state == ZOMBIE){
         // Found one.

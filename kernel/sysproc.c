@@ -70,20 +70,20 @@ sys_getpid(void)
 int
 sys_sbrk(void)
 {
-  int addr;
+  int size;
   int n;
 
   if(argint(0, &n) < 0)
     return -1;
 
   acquire(&memlock);
-  addr = proc->sz;
+  size = proc->sz;
   if(growproc(n) < 0){
     release(&memlock);
     return -1;
   }
   release(&memlock);
-  return addr;
+  return size;
 }
 
 int
