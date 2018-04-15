@@ -67,7 +67,18 @@ int thread_create(void (*start_routine)(void*, void*), void* arg1, void* arg2)
 
 int thread_join()
 {
-  return 0;
+  void* stack;
+  int ret = join(&stack);
+  for(int i = 0; i < MAX_PROC; i++){
+    if(ptrs[i].busy == 1 && ptrs[i].stack == stack){
+      free(ptrs[i].ptr);
+      ptrs[i].stack = NULL;
+      ptrs[i].busy = 0;
+      ptrs[i].ptr = NULL;
+      break;
+    }
+  }
+  return ret;
 }
 
 char*

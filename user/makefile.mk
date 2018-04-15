@@ -3,7 +3,6 @@
 USER_PROGS := \
 	cat\
 	echo\
-	forktest\
 	grep\
 	init\
 	kill\
