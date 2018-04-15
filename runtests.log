@@ -33,23 +33,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 412 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 454 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -87,23 +87,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 413 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 455 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -117,7 +117,6 @@ init: starting sh
 $ tester
 tester
 PASSED TEST!
-
 
 test clone_parent_sleep PASSED (10 of 10)
  (test for clone() and join() where the thread terminates before join() is called)
@@ -141,23 +140,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 413 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 455 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -195,23 +194,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 415 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 457 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -251,23 +250,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 415 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 458 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -305,23 +304,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 413 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 456 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -338,6 +337,7 @@ PID 4 should trap to 0xffffffff...
 pid 4 tester: trap 14 err 4 on cpu 1 eip 0xe5895500 addr 0xe5895500--kill proc
 PID 4 joined. Check manually if the trap succeeded.
 PASSED TEST!
+
 
 test clone_return PASSED (10 of 10)
  (test for clone() where the thread function returns, requires manual inspection)
@@ -361,23 +361,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 413 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 455 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -415,23 +415,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 410 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 453 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -529,23 +529,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 412 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 455 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -560,6 +560,7 @@ $ tester
 tester
 Created 50 child threads, creator thread exiting...
 PASSED TEST!
+
 
 test threads_zombies PASSED (10 of 10)
  (create many threads, and make them all zombies)
@@ -583,23 +584,23 @@ cp user/bin/tester fs/tester
 ./tools/mkfs fs.img fs
 used 29 (bit 1 ninode 26) free 29 total 1024
 wc
+zombie
+usertests
+echo
+cat
+tester
+mkdir
+grep
+init
 ln
 ls
-mkdir
-usertests
-forktest
-echo
-tester
-grep
 kill
-zombie
-rm
-cat
-stressfs
-init
-README
 sh
-balloc: first 421 blocks have been allocated
+README
+stressfs
+rm
+forktest
+balloc: first 463 blocks have been allocated
 balloc: write bitmap block at sector 28
 rm user/bin/tester
 make qemu-nox 
@@ -613,13 +614,12 @@ init: starting sh
 $ tester
 tester
 Creating 1 thread to call sbrk() once...
-user/tester.c:93 check (addr == (char *)stack1 + 2*PGSIZE) failed: sbrk() failed
-TEST FAILED
+Creating 2 threads to call sbrk() many times...
+PASSED TEST!
 
 
-test threads_sbrk FAILED (0 of 10)
+test threads_sbrk PASSED (10 of 10)
  (test to make sure threads handle sbrk() correctly)
- tester failed
 
 starting lock_basic
 
@@ -635,9 +635,6 @@ make
 gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
 	-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
 gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
-user/tester.c:20:1: error: unknown type name ‘lock_t’
- lock_t lock;
- ^
 user/tester.c: In function ‘func’:
 user/tester.c:48:5: error: implicit declaration of function ‘lock_acquire’ [-Werror=implicit-function-declaration]
      lock_acquire(&lock);
@@ -672,9 +669,6 @@ make
 gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 \
 	-M -MG user/tester.c -MF user/tester.d -MT user/tester.d -MT user/tester.o
 gcc  -I include -nostdinc -Wall -Werror -ggdb -fno-pic -fno-builtin -fno-strict-aliasing -fno-stack-protector -m32 -c -o user/tester.o user/tester.c
-user/tester.c:20:1: error: unknown type name ‘lock_t’
- lock_t lock1, lock2;
- ^
 user/tester.c: In function ‘func’:
 user/tester.c:48:5: error: implicit declaration of function ‘lock_acquire’ [-Werror=implicit-function-declaration]
      lock_acquire(&lock1);
@@ -683,10 +677,6 @@ user/tester.c:54:5: error: implicit declaration of function ‘lock_release’ [
      lock_release(&lock1);
      ^
 user/tester.c: In function ‘main’:
-user/tester.c:70:26: error: ‘lock_t’ undeclared (first use in this function)
-   for (i = 0; i < sizeof(lock_t); ++i) {
-                          ^
-user/tester.c:70:26: note: each undeclared identifier is reported only once for each function it appears in
 user/tester.c:75:3: error: implicit declaration of function ‘lock_init’ [-Werror=implicit-function-declaration]
    lock_init(&lock1);
    ^
@@ -741,9 +731,8 @@ test threads_many FAILED (0 of 10)
 test threads_zombies PASSED (10 of 10)
  (create many threads, and make them all zombies)
 
-test threads_sbrk FAILED (0 of 10)
+test threads_sbrk PASSED (10 of 10)
  (test to make sure threads handle sbrk() correctly)
- tester failed
 
 test lock_basic FAILED (0 of 10)
  (basic test for lock correctness)
@@ -753,6 +742,6 @@ test lock_setup FAILED (0 of 10)
  (test that locks are set up correctly and do not interfere with each other)
  make failed (error 2)
 
-Passed 8 of 15 tests.
-Overall 8 of 15
-Points 70 of 140
+Passed 9 of 15 tests.
+Overall 9 of 15
+Points 80 of 140

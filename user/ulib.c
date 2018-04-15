@@ -4,19 +4,41 @@
 #include "user.h"
 #include "x86.h"
 
+#define MAX_PROC 64
+struct ptr_struct {
+  int busy; //whether in use or not
+  void *ptr;
+  void *stack;
+};
+
+struct ptr_struct ptrs[MAX_PROC];
+
+static inline int fetch_and_add(int *var, int val) {   
+    __asm__ volatile
+    ("lock; xaddl %0, %1"
+	: "+r" (val),  "+m" (*var) // input + output
+	: // No input
+	: "memory"
+    );
+    return val;
+}
+
 void lock_init(lock_t *lock)
 {
-
+  lock->ticket = 0;
+  lock->turn = 0;
 }
 
 void lock_acquire(lock_t *lock)
 {
-
+  int turn = fetch_and_add(&lock->ticket, 1);
+  while(lock->turn != turn) //spin lock
+  {}
 }
 
 void lock_release(lock_t *lock)
 {
-
+  lock->turn = lock->turn + 1;
 }
 
 int thread_create(void (*start_routine)(void*, void*), void* arg1, void* arg2)
