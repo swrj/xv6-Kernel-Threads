@@ -1,6 +1,7 @@
 # Kernel Threading in xv6
 Added support for threading in the xv6 kernel.
 Added support to create a thread using the clone() function and ability to wait for a thread using the join() function. 
+[Learn more about xv6 here.](https://pdos.csail.mit.edu/6.828/2011/xv6/xv6-rev6.pdf)
 
 ## Usage:
 Start xv6 by running:
