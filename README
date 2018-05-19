@@ -1,3 +1,15 @@
+# Kernel Threading in xv6
+Added support for threading in the xv6 kernel.
+Added support to create a thread using the clone() function and ability to wait for a thread using the join() function. 
+
+## Usage:
+Start xv6 by running:
+```
+make clean
+make
+```
+### LICENSE
+
 xv6 is a re-implementation of Dennis Ritchie's and Ken Thompson's Unix
 Version 6 (v6).  xv6 loosely follows the structure and style of v6,
 but is implemented for a modern x86-based multiprocessor using ANSI C.
